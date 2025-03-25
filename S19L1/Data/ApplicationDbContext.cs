@@ -9,9 +9,16 @@ namespace S19L1.Data
 
         public DbSet<Student> Students { get; set; }
 
+        public DbSet<StudentProfile> StudentProfiles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<StudentProfile>()
+                .HasOne(sp => sp.Student)
+                .WithOne(s => s.StudentProfile)
+                .HasForeignKey<StudentProfile>(sp => sp.StudentId);
         }
     }
 }

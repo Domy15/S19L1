@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace S19L1.Models
+namespace S19L1.DTOs.Student
 {
-    public class Student
+    public class GetStudentRequestDto
     {
-        [Key]
+        [Required]
         public Guid Id { get; set; }
 
         [Required]
@@ -17,7 +16,5 @@ namespace S19L1.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-
-        public StudentProfile StudentProfile { get; set; }
     }
 }
