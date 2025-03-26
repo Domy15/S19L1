@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using S19L1.Models;
 using S19L1.Services;
 using S19L1.DTOs.Student;
+using Microsoft.AspNetCore.Authorization;
 
 namespace S19L1.Controller
 {
@@ -18,6 +19,7 @@ namespace S19L1.Controller
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateStudent([FromBody] CreateStudentRequestDto studentDto)
         {
             try
@@ -82,6 +84,7 @@ namespace S19L1.Controller
         }
 
         [HttpDelete("{id:guid}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteStudent(Guid id)
         {
             try
@@ -98,6 +101,7 @@ namespace S19L1.Controller
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateStudent([FromQuery] Guid id, [FromBody] UpdateStudentRequestDto student)
         {
             try
